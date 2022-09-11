@@ -30,120 +30,81 @@ export interface custom_fields_object {
     [k: string]: string | number | null | boolean
 }
 
+export interface Purchase {
+    id: string;
+    email: string;
+    seller_id: string;
+    timestamp: string;
+    daystamp: string;
+    created_at: Date;
+    product_name: string;
+    product_has_variants: boolean;
+    price: number;
+    gumroad_fee: number;
+    subscription_duration: string;
+    formatted_display_price: string;
+    formatted_total_price: string;
+    currency_symbol: string;
+    amount_refundable_in_currency: string;
+    product_id: string;
+    product_permalink: string;
+    refunded: boolean;
+    partially_refunded: boolean;
+    chargedback: boolean;
+    purchase_email: string;
+    full_name: string;
+    state: string;
+    country: string;
+    paid: boolean;
+    has_variants: boolean;
+    variants: Variants;
+    variants_and_quantity: string;
+    has_custom_fields: boolean;
+    custom_fields: custom_fields_object;
+    order_id: number;
+    is_product_physical: boolean;
+    purchaser_id: string;
+    is_recurring_billing: boolean;
+    can_contact: boolean;
+    is_following: boolean;
+    disputed: boolean;
+    dispute_won: boolean;
+    is_additional_contribution: boolean;
+    discover_fee_charged: boolean;
+    is_upgrade_purchase: boolean;
+    is_gift_sender_purchase: boolean;
+    is_gift_receiver_purchase: boolean;
+    referrer: string;
+    card: Card;
+    product_rating?: any;
+    reviews_count: number;
+    average_rating: number;
+    subscription_id: string;
+    cancelled: boolean;
+    dead: boolean;
+    ended: boolean;
+    free_trial_ended?: any;
+    free_trial_ends_on?: any;
+    recurring_charge: boolean;
+    receipt_url: string;
+    license_key?: string;
+    license_id?: string;
+    is_multiseat_license : boolean;
+    license_disabled: boolean;
+    quantity: number;
+}
+
 export interface GumroadSubscriptionChargesResponseInterface {
     success: boolean,
     remaining_charges_count: number,
     fixed_length_subscription: boolean,
-    recurring_purchases: {
-        id: string;
-        email: string;
-        seller_id: string;
-        timestamp: string;
-        daystamp: string;
-        created_at: Date;
-        product_name: string;
-        product_has_variants: boolean;
-        price: number;
-        gumroad_fee: number;
-        subscription_duration: string;
-        formatted_display_price: string;
-        formatted_total_price: string;
-        currency_symbol: string;
-        amount_refundable_in_currency: string;
-        product_id: string;
-        product_permalink: string;
-        refunded: boolean;
-        partially_refunded: boolean;
-        chargedback: boolean;
-        purchase_email: string;
-        full_name: string;
-        state: string;
-        country: string;
-        paid: boolean;
-        has_variants: boolean;
-        variants: Variants;
-        variants_and_quantity: string;
-        has_custom_fields: boolean;
-        custom_fields: custom_fields_object;
-        order_id: number;
-        is_product_physical: boolean;
-        purchaser_id: string;
-        is_recurring_billing: boolean;
-        can_contact: boolean;
-        is_following: boolean;
-        disputed: boolean;
-        dispute_won: boolean;
-        is_additional_contribution: boolean;
-        discover_fee_charged: boolean;
-        is_upgrade_purchase: boolean;
-        is_gift_sender_purchase: boolean;
-        is_gift_receiver_purchase: boolean;
-        referrer: string;
-        card: Card;
-        product_rating?: any;
-        reviews_count: number;
-        average_rating: number;
-        subscription_id: string;
-        cancelled: boolean;
-        dead: boolean;
-        ended: boolean;
-        free_trial_ended?: any;
-        free_trial_ends_on?: any;
-        recurring_charge: boolean;
-        receipt_url: string;
-        license_key: string;
-        license_id: string;
-        license_disabled: boolean;
-        quantity: number;
-    }[]
+    recurring_purchases: Purchase[]
 }
 
 export interface GumroadLicenseResponseInterface {
     success: boolean,
     uses: number,
-    purchase: {
-        "seller_id": string, //"20X1234N76AxDg==",
-        "product_id": string, //"RA1234seVnw==",
-        "product_name": string, //"open-wa License Keys",
-        "permalink": string, //"open-wa",
-        "product_permalink": string, //"https://s1234ah.gumroad.com/l/open-wa",
-        "short_product_id": string, //"BTMt",
-        "email": string, //"fmssss95@gmail.com",
-        "price": number, //981,
-        "gumroad_fee": string, //74,
-        "currency": string, //"gbp",
-        "quantity": number, //1,
-        "discover_fee_charged": boolean, //false,
-        "can_contact": boolean, //true,
-        "referrer": string, //"direct",
-        "card": Card,
-        "order_number": number, //112347571,
-        "sale_id": string, //"ZnunF6BL1234XGw==",
-        "sale_timestamp": string, //"2020-05-13T01:24:06Z",
-        "full_name": string, //"John Smith",
-        "subscription_id": string, //"AbCpj1234ssssTPUQ==",
-        "variants": string, //"(1 Restricted License Key)",
-        "offer_code": {
-            "name": string, //"9h23bsd",
-            "displayed_amount_off": string, //"20%"
-        } | undefined,
-        "Github Username": string, //"fsssc",
-        "Number (e.g 447712345678)": string, //"48s123492",
-        "Reason/Use case": string, //"Wbla bla bla bla.",
-        "custom_fields": custom_fields_array | undefined,
-        "license_key": string, //"C1234A-4SSSS2E-B312342-D1324E1",
-        "ip_country": string, //"Germany",
-        "recurrence": string, //"monthly",
-        "is_gift_receiver_purchase": boolean, //false,
-        "refunded": boolean, //false,
-        "disputed": boolean, //false,
-        "dispute_won": boolean, //false,
-        "id": boolean, //"ZnunF61234kvXGw==",
-        "created_at": string | null, //"2020-05-13T01:24:06Z",
-        "subscription_ended_at": string | null, //null,
-        "subscription_cancelled_at": string | null, //"2020-12-13T01:25:04Z",
-        "subscription_failed_at": string | null
-    } & custom_fields_object
+    purchase: Purchase & custom_fields_object
 }
 
 export interface Subscription {
@@ -162,12 +123,12 @@ export interface Subscription {
     ended_at: any
     failed_at: any
     free_trial_ends_at: any
-    status: string
-  }
+    status: "alive" | "pending_failure" | "failed_payment" | "fixed_subscription_period_ended" | "cancelled"
+}
 
-  export interface GumroadApiResponseWrapperInterface {
+export interface GumroadApiResponseWrapperInterface {
     success: boolean,
-  }
+}
 
 enum INVALID_LICENSE_REASONS {
     OUTSTANDING_PAYMENTS = 'outstanding_payments',
@@ -188,25 +149,50 @@ export class InvalidLicenseError extends Error {
 
 export class GumroadLicense {
     client: GumroadClient;
-    data: GumroadLicenseResponseInterface;
-    constructor(data: GumroadLicenseResponseInterface, client: GumroadClient) {
-        this.data = data;
+    initiatingPurchase: Purchase;
+    subscriptionId: string;
+    subscription?: Subscription;
+    purchases?: Purchase[];
+
+    constructor(initiatingPurchase: Purchase, client: GumroadClient) {
         this.client = client
+        this.initiatingPurchase = initiatingPurchase
+        this.subscriptionId = this.initiatingPurchase.subscription_id
     }
 
     async getCharges() {
-        const charges = await this.client.getSubscriptionCharges(this.data.purchase.subscription_id)
-        return charges
+        return this.getPurchases()
+    }
+
+    async getPurchases() {
+        if (!this.purchases) {
+            const purchases = await this.client.getSubscriptionPurchases(this.subscriptionId)
+            this.purchases = purchases;
+        }
+        return this.purchases;
+    }
+
+    async getSubscription() {
+        if (!this.subscription) {
+            const subscription = await this.client.getSubscription(this.subscriptionId)
+            this.subscription = subscription;
+        }
+        return this.subscription
     }
 
     async isValid(invalidCases?: InvalidCases) {
-        if (invalidCases) {
-            if ((await this.getCharges()).remaining_charges_count > 0) throw new InvalidLicenseError(INVALID_LICENSE_REASONS.OUTSTANDING_PAYMENTS)
+        const status = await this.getStatus()
+        if (status === "alive") {
+            return true;
         }
-        if (this.data.purchase.subscription_cancelled_at) throw new InvalidLicenseError(INVALID_LICENSE_REASONS.CANCELLED_LICENSE)
-        if (this.data.purchase.subscription_ended_at) throw new InvalidLicenseError(INVALID_LICENSE_REASONS.EXPIRED_LICENSE)
-        return true
+        throw new Error(`INVALID SUBSCRIPTION: ${status}`)
     }
+
+    async getStatus() {
+        const subscription = await this.getSubscription();
+        return subscription.status;
+    }
+
 }
 
 export class GumroadClient {
@@ -214,10 +200,12 @@ export class GumroadClient {
     private product_id?: string;
     private apiUrl: string = "https://gumroad.com/api/v2/";
     #access_token = "";
+    #cookie?: string = "";
 
-    constructor(access_token: string, product_id?: string) {
+    constructor(access_token: string, product_id?: string, cookie?: string) {
         this.product_id = product_id;
         this.#access_token = access_token;
+        this.#cookie = cookie;
     }
 
     public async req(method: 'PUT' | 'POST' | 'GET' | 'DELETE', endpoint: string, _data: any = {}, headers: any = {}) {
@@ -230,13 +218,32 @@ export class GumroadClient {
             url: `${this.apiUrl}/${endpoint}`,
             params: {
                 access_token: this.#access_token,
-                ...(method==="GET" && _data || {})
+                ...(method === "GET" && _data || {})
             },
             data: _data,
             headers
         });
         if (data?.success && status === 200) return data
         throw new Error(`Gumroad API returned ${status}, ${data?.success}`);
+    }
+
+    public async cookieRequest(method: 'PUT' | 'POST' | 'GET' | 'DELETE', endpoint: string, _data: any = {}, headers: any = {}) {
+        headers = {
+            "Content-type": "application/json",
+            "cookie": this.#cookie || "",
+            ...headers,
+        }
+        const { data, status } = await axios({
+            method,
+            url: `https://app.gumroad.com/${endpoint}`,
+            params: {
+                ...(method === "GET" && _data || {})
+            },
+            data: _data,
+            headers
+        });
+        if (status === 200) return data
+        throw new Error(`Gumroad API returned ${status}, ${data}`);
     }
 
     public async getLicense(license_key: string, product_id: string): Promise<GumroadLicense> {
@@ -247,38 +254,91 @@ export class GumroadClient {
             product_permalink,
             license_key
         })) as GumroadLicenseResponseInterface;
-        return new GumroadLicense(licData, this)
-    }
-
-    public async getSubscriptionCharges(subscription_id: string): Promise<GumroadSubscriptionChargesResponseInterface> {
-        const charges = await this.req('GET', `customers/subscription_recurring_purchases/${subscription_id}`) as GumroadSubscriptionChargesResponseInterface
-        return charges
+        return new GumroadLicense(licData.purchase, this)
     }
 
     /**
-     * Grab the licenses of the 
+     * Get the array of purchases within a given subscription. Each monthly charge for a subscription is it's own purchase object.
+     * 
+     * @param subscription_id the id of the subscription.
+     * @returns 
      */
-    public async getSubscriptions(product_id: string, email ?: string) : Promise<GumroadApiResponseWrapperInterface & {
-        subscribers: Subscription[]
-    }> {
+    public async getSubscriptionPurchases(subscription_id: string): Promise<Purchase[]> {
+        const charges = await this.cookieRequest('GET', `customers/subscription_recurring_purchases/${subscription_id}`) as GumroadSubscriptionChargesResponseInterface
+        return charges.recurring_purchases
+    }
+
+    /**
+     * Returns an array of FIRST purchase objects for subscribers.
+     * 
+     * The license key is a property of only the first purchase within a subscription. This seems like a bug.
+     * 
+     * Remember, a subscription is made up of an array of monthly recurring purchases.
+     * 
+     * @param query the search query (a.k.a email)
+     * @returns 
+     */
+    public async searchPurchases(query: string): Promise<Purchase[]> {
+        const matchingPurchases = await this.cookieRequest('GET', `purchases/search?query=${query}`);
+        return matchingPurchases
+    }
+
+    /**
+     * Grab the subscriptions of the email provided.
+     * 
+     * The issue with this is that the subscription object does not return the license key.
+     * 
+     * So instead you have to use `searchPurchases` to get a purchase object which includes a subscription ID and the license key.
+     * 
+     * Interestingly, a license key is a property of a the first purchase within a subscription.
+     * 
+     * @param email optionally filter by email
+     * @param product_id override existing product id
+     * @returns 
+     */
+    public async getSubscriptions(email?: string, product_id?: string): Promise<Subscription[]> {
+        product_id = product_id || this.product_id
         const subscriptions = await this.req('GET', `products/${product_id}/subscribers`, {
             email
         }) as GumroadApiResponseWrapperInterface & {
             subscribers: Subscription[]
         }
-        return subscriptions
+        return subscriptions.subscribers
+    }
+
+    public async getLicensesWithSubscriptionDetailsByEmail(email: string, product_id?: string) {
+        product_id = product_id || this.product_id
+        const purchases = await this.searchPurchases(email)
+        /**
+         * Grab all subscriptions and their relevant licenses, return array of licenses.
+         */
+        purchases.map(purchase => {
+            /**
+             * Each of these purchases represent the FIRST purchase on a subscription so they should all include a license key.
+             */
+
+        })
     }
 
     /**
-     * Check if the email address provided in the second param is a subscriber of the given product id.
-     * @param product_id the gumroad product id (e.g BTMt)
+     * Check if the email address provided is a subscriber of the given product id.
      * @param email the email to check
+     * @param product_id the gumroad product id (e.g BTMt)
      * @returns boolean
      */
-    public async emailIsSubscriber(product_id: string, email : string) : Promise<boolean> {
-        const subscriptions = await this.getSubscriptions(product_id,email);
-        if(subscriptions.subscribers.length) return true;
+    public async emailIsSubscriber(email: string, product_id ?: string): Promise<boolean> {
+        const subscriptions = await this.getSubscriptions(email, product_id);
+        if (subscriptions.length) return true;
         return false;
+    }
+
+    public async getSubscription(subscription_id: string): Promise<Subscription> {
+        const subscriptionResponse = await this.req('GET', `subscribers/${subscription_id}`)
+        if (subscriptionResponse.success) {
+            const subscription = subscriptionResponse.subscriber as Subscription;
+            return subscription
+        }
+        throw new Error("Subscription request error", subscriptionResponse)
     }
 
 }
