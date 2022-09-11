@@ -193,12 +193,17 @@ export class GumroadLicense {
         return subscription.status;
     }
 
+    async getTotalRevenue() {
+        const charges = await this.getCharges();
+        return charges.reduce((x,y)=>x+y.price,0)
+    }
+
 }
 
 export class GumroadClient {
 
     private product_id?: string;
-    private apiUrl: string = "https://gumroad.com/api/v2/";
+    private apiUrl: string = "https://gumroad.com/api/v2";
     #access_token = "";
     #cookie?: string = "";
 
@@ -306,6 +311,11 @@ export class GumroadClient {
         return subscriptions.subscribers
     }
 
+    /**
+     * @TODO not finished
+     * @param email 
+     * @param product_id 
+     */
     public async getLicensesWithSubscriptionDetailsByEmail(email: string, product_id?: string) {
         product_id = product_id || this.product_id
         const purchases = await this.searchPurchases(email)
@@ -316,7 +326,6 @@ export class GumroadClient {
             /**
              * Each of these purchases represent the FIRST purchase on a subscription so they should all include a license key.
              */
-
         })
     }
 
