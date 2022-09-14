@@ -29,6 +29,8 @@ test("Check Cancelled license", async t => {
     await t.throwsAsync(async () => {
         const isValid = await license.isValid();
     }, {instanceOf: Error, message: 'INVALID SUBSCRIPTION: cancelled'});
+    const charges = await license.getCharges()
+    t.truthy(charges.length)
     const totalRev = await license.getTotalRevenue()
     t.is(totalRev, 16341)
 })
