@@ -1,6 +1,6 @@
 {
   "name": "smashroad",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An advanced Gumroad API client by @smashah.",
   "main": "./lib/index.js",
   "scripts": {
