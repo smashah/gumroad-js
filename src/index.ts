@@ -1,4 +1,5 @@
 import axios from 'axios';
+import fetchAdapter from "@vespaiach/axios-fetch-adapter";
 /**
  * Gumroad API requires:
  * Product ID
@@ -454,7 +455,7 @@ export class GumroadClient {
             "Content-type": "application/json",
             ...headers,
         }
-        const { data, status } = await axios({
+        const config = {
             method,
             url: `${this.apiUrl}/${endpoint}`,
             params: {
@@ -463,7 +464,10 @@ export class GumroadClient {
             },
             data: _data,
             headers
-        });
+        }
+        // @ts-ignore
+        if(fetch) config.adapter = fetchAdapter
+        const { data, status } = await axios(config);
         if (data?.success && status === 200) return data
         throw new Error(`Gumroad API returned ${status}, ${data?.success}`);
     }
