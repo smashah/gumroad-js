@@ -1,5 +1,5 @@
 import axios from 'axios';
-import fetchAdapter from "@vespaiach/axios-fetch-adapter";
+import fetchAdapter from "@haverstack/axios-fetch-adapter";
 /**
  * Gumroad API requires:
  * Product ID
