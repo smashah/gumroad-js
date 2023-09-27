@@ -38,7 +38,7 @@ export interface custom_fields_object {
 export interface GumroadSaleData {
     sale_id: string; // The id of the sale
     sale_timestamp: string; // The timestamp of the sale
-    order_number: number; // Numeric version of sale_id
+    order_number: number | string; // Numeric version of sale_id but as a string
     seller_id: string; // The id of the seller
     product_id: string; // The id of the product
     product_permalink: string; // The permalink of the product
