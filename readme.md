@@ -63,6 +63,8 @@ public async getLicense(license_key: string, product_id: string): Promise<Gumroa
 
 ```javascript
 public async getSubscriptionPurchases(subscription_id: string): Promise<Purchase[]>
+```
+
 ```javascript
 public async searchPurchases(query: string): Promise<Purchase[]>
 ```
