@@ -6,6 +6,9 @@ import fetchAdapter from "@haverstack/axios-fetch-adapter";
  * License Key
  */
 
+export type sn = string | number;
+export type sb = string | boolean;
+
 export interface InvalidCases {
     /**
      * Set this to true if you consider outstanding payments a marker for an invalid license.
@@ -19,10 +22,10 @@ export interface Variants {
 
 export interface Card {
     visual: string;
-    type: string;
-    bin?: any;
-    expiry_month: number;
-    expiry_year: number;
+    type: sn;
+    bin?: sn;
+    expiry_month: sn;
+    expiry_year: sn;
 }
 
 export type custom_fields_array = string[]
@@ -47,7 +50,7 @@ export interface GumroadSaleData {
     email: string; // The email of the buyer
     url_params?: { [key: string]: string }; // URL parameters
     full_name?: string; // The name of the buyer
-    purchaser_id?: string; // The id of the purchaser's Gumroad account, if the purchaser has one
+    purchaser_id?: string | number; // The id of the purchaser's Gumroad account, if the purchaser has one
     subscription_id?: string; // The id of the subscription, if the purchase is part of a subscription
     ip_country?: string; // The country of the buyer's IP address
     price: number; // The price paid, in USD cents
