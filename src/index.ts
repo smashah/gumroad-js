@@ -164,10 +164,10 @@ export interface GumroadSubscriptionData {
 // Define a type for the card data
 export interface Card {
     visual: string; // The visual representation of the card
-    type: string; // The type of card
-    bin?: any; // The BIN (Bank Identification Number) of the card
-    expiry_month: number; // The expiry month of the card
-    expiry_year: number; // The expiry year of the card
+    type: sn; // The type of card
+    bin?: sn; // The BIN (Bank Identification Number) of the card
+    expiry_month: sn; // The expiry month of the card
+    expiry_year: sn; // The expiry year of the card
 }
 /**
  * Represents the "subscription_ended" resource in Gumroad's webhook payload.
